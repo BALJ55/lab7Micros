@@ -64,7 +64,7 @@ int main(int argc, char** argv){
 }
 void *create_image(void* numero){ 
     cout<<"thread No."<<numero<<"launched"<<endl;
-	int res:
+	int res;
     for (int i = 0; i<H; i++){
         for(int j = 0; j <W; j++){
 			res=i*j;
