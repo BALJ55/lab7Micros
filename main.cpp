@@ -12,14 +12,14 @@ void pixelate(Mat& src, Mat& dst, int pixel_size = 1) {
 
         Rect rect;
 
-        for (int r = 0; r < src.rows; r += W)
+        for (int r = 0; r < src.rows; r += pixel_size)
         {
-            for (int c = 0; c < src.cols; c += H)
+            for (int c = 0; c < src.cols; c += pixel_size)
             {
                 rect.x = c;
                 rect.y = r;
-                rect.width = c + W < src.cols ? W : src.cols - c;
-                rect.height = r + H < src.rows ? H : src.rows - r;
+                rect.width = c + pixel_size < src.cols ? pixel_size : src.cols - c;
+                rect.height = r + pixel_size < src.rows ? pixel_size : src.rows - r;
 
                 // obtener el color promedio del area indicada
                 Scalar color = mean(Mat(src, rect));
