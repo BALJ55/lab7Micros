@@ -1,7 +1,11 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
+#include <pthread.h>
+
 #define W 3
 #define H 4
+#define NUM_THREADS 10
+
 using namespace cv;
 using namespace std;
 
@@ -12,10 +16,8 @@ void pixelate(Mat& src, Mat& dst, int pixel_size = 1) {
 
         Rect rect;
 
-        for (int r = 0; r < src.rows; r += H*W)
-        {
-            for (int c = 0; c < src.cols; c += H*W)
-            {
+        for (int r = 0; r < src.rows; r += H*W){
+            for (int c = 0; c < src.cols; c += H*W){
                 rect.x = c;
                 rect.y = r;
                 rect.width = c + pixel_size < src.cols ? pixel_size : src.cols - c;
@@ -47,16 +49,28 @@ void ontrack(int value, void* data) {
 
 }
 
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv){
     Mat image = imread("ramphastosSulphuratus.jpeg", CV_LOAD_IMAGE_COLOR);
 
-    int pixel_size = 8;
+	for (t = 0; t <= NUM_THREADS; t++){
+        pthread_create(&threads[t], NULL, create_image, (void *) t);
+    }
+    ontrack(H*W, &image);
 
-    //namedWindow("Pixelate Effect", WINDOW_AUTOSIZE);
-    //createTrackbar("Pixel Size", "Pixelate Effect", &pixel_size, 50, ontrack, &image);
-    ontrack(pixel_size, &image);
-
+    for (t = 0; t <= NUM_THREADS; t++){
+        pthread_join(threads[t], &return_status);
+    }
 
     return 0;
+}
+void *create_image(void* numero){ 
+    cout<<"thread No."<<numero<<"launched"<<endl;
+	int res:
+    for (int i = 0; i<H; i++){
+        for(int j = 0; j <W; j++){
+			res=i*j;
+		}		
+	}
+    pthread_exit((void*) retornado);
+
 }
