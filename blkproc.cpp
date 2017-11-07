@@ -48,6 +48,11 @@ int main(int argc, char** argv)
 {
     Mat image = imread("ramphastosSulphuratus.jpeg", CV_LOAD_IMAGE_COLOR);
 
+    if (image.empty()) {
+        printf("No image data \n");
+        return -1;
+    }
+
     int pixel_size = 8;
 
     namedWindow("Pixelate Effect", WINDOW_AUTOSIZE);
