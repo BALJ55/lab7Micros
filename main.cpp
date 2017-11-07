@@ -12,9 +12,9 @@ void pixelate(Mat& src, Mat& dst, int pixel_size = 1) {
 
         Rect rect;
 
-        for (int r = 0; r < src.rows; r += pixel_size)
+        for (int r = 0; r < src.rows; r += H*W)
         {
-            for (int c = 0; c < src.cols; c += pixel_size)
+            for (int c = 0; c < src.cols; c += H*W)
             {
                 rect.x = c;
                 rect.y = r;
