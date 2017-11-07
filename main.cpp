@@ -9,6 +9,18 @@
 using namespace cv;
 using namespace std;
 
+void *create_image(void* numero){
+    cout<<"thread calledd"<<endl;
+        int res;
+    for (int i = 0; i<H; i++){
+        for(int j = 0; j <W; j++){
+                        res=i*j;
+                }
+        }
+    pthread_exit((void*) res);
+
+}
+
 void pixelate(Mat& src, Mat& dst, int pixel_size = 1) {
     try {
         // crear cv::Mat de salida, de igual tamano que la imagen src
@@ -54,22 +66,12 @@ int main(int argc, char** argv){
     pthread_t threads[NUM_THREADS];
     int t = 0;
 
-	for (t = 0; t <= NUM_THREADS; t++){
-        pthread_create(&threads[t], NULL, create_image, (void *) t);
-    }
+//	for (t = 0; t <= NUM_THREADS; t++){
+  //      pthread_create(&threads[t], NULL, create_image, (void *) t);
+   // }
     ontrack(H*W, &image);
 
 
     return 0;
 }
-void *create_image(void* numero){ 
-    cout<<"thread No."<<numero<<"launched"<<endl;
-	int res;
-    for (int i = 0; i<H; i++){
-        for(int j = 0; j <W; j++){
-			res=i*j;
-		}		
-	}
-    pthread_exit((void*) res);
 
-}
