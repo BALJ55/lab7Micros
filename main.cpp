@@ -9,11 +9,10 @@ using namespace std;
 int main(){
     Mat image, newImage	;
     image = imread("ramphastosSulphuratus.jpg", CV_LOAD_IMAGE_COLOR);   // Read the file
-	int[3] average=[0,0,0]
+	int  average [3]={0,0,0};
 	for (int rows=0; rows<=image.rows; rows=rows+W){
 		for(int cols=0; cols<=image.cols; cols=cols+H){
-			Rect r(rows, rows + W, cols, cols+W);
-			Mat cropped = new Mat(image, r);
+			Mat cropped(image, Rect(rows, cols, rows+H, cols+W));
 			averagePixel(cropped);
 		
 
@@ -27,7 +26,7 @@ int main(){
 
     return 0;
 }
-int[3] averagePixel(mat subImage){
+int [3] averagePixel(mat subImage){
 	int crows, ccols;
 	int[] bc =[0,0,0];
 	for(crows=0; crows<= subImage.rows; crows++){

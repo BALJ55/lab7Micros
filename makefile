@@ -1,13 +1,13 @@
 TARGET= main
-LIB= cvlib
+
 all: $(TARGET)
 
-$(TARGET): $(TARGET).o $(LIB).o
-	g++ -ggdb $(TARGET).o $(LIB).o `pkg-config --cflags --libs opencv` -o $(TARGET)
-	rm $(TARGET).o $(LIB).o
+$(TARGET): $(TARGET).o
+	g++ -ggdb $(TARGET).o `pkg-config --cflags --libs opencv` -o $(TARGET) -lpthread
+	rm $(TARGET).o
 
 $(TARGET).o:
-	g++ -ggdb -c $(TARGET).cpp $(LIB).cpp 
+	g++ -ggdb -c $(TARGET).cpp
 
 clean:
 	rm $(TARGET).o $(TARGET)
