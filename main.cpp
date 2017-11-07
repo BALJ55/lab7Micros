@@ -59,9 +59,6 @@ int main(int argc, char** argv){
     }
     ontrack(H*W, &image);
 
-    for (t = 0; t <= NUM_THREADS; t++){
-        pthread_join(threads[t], &return_status);
-    }
 
     return 0;
 }
