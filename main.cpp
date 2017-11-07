@@ -43,7 +43,7 @@ void ontrack(int value, void* data) {
     pixelate(*((Mat*)data), dst2, W*H);
 
     imshow("Pixelate Effect", dst2);
-	 imwrite( "newImage", dst2 );
+	imwrite( "newImage.jpg", dst2 );
 
 }
 
