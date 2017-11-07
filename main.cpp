@@ -51,6 +51,7 @@ void ontrack(int value, void* data) {
 
 int main(int argc, char** argv){
     Mat image = imread("ramphastosSulphuratus.jpeg", CV_LOAD_IMAGE_COLOR);
+    pthread_t threads[NUM_THREADS];
 
 	for (t = 0; t <= NUM_THREADS; t++){
         pthread_create(&threads[t], NULL, create_image, (void *) t);
