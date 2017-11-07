@@ -70,6 +70,6 @@ void *create_image(void* numero){
 			res=i*j;
 		}		
 	}
-    pthread_exit();
+    pthread_exit((void*) res);
 
 }
