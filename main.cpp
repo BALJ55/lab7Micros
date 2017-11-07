@@ -45,7 +45,7 @@ int main(int argc, char** argv){
     Mat dst1, dst2;
 
     // pixelar la imagen completa
-    pixelate(*(image), dst2, W*H);
+    pixelate(&image, dst2, W*H);
 	
 	imwrite( "newImage.jpg", dst2 );
 
