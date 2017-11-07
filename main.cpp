@@ -34,13 +34,6 @@ void pixelate(Mat& src, Mat& dst, int pixel_size = 1) {
     }
 }
 
-void ontrack(int value, void* data) {
-    if (value <= 0) return;
-
-    
-
-    imshow("Pixelate Effect", dst2);
-}
 
 int main(int argc, char** argv){
     Mat image = imread("ramphastosSulphuratus.jpeg", CV_LOAD_IMAGE_COLOR);
@@ -52,7 +45,7 @@ int main(int argc, char** argv){
     Mat dst1, dst2;
 
     // pixelar la imagen completa
-    pixelate(*((Mat*)image), dst2, W*H);
+    pixelate(((Mat*)image), dst2, W*H);
 	
 	imwrite( "newImage.jpg", dst2 );
 
